@@ -660,6 +660,116 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
+/*** Edge-to-Edge Mobile & Responsive Overrides ***/
+@media (max-width: 767.98px) {
+    .container, 
+    .container-fluid, 
+    .container-xxl {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .row {
+        --bs-gutter-x: 8px;
+        --bs-gutter-y: 8px;
+    }
+
+    section {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    #header-carousel .carousel-item {
+        min-height: 380px;
+    }
+
+    .carousel-caption {
+        padding: 12px 10px !important;
+        align-items: flex-end !important;
+        padding-bottom: 24px !important;
+        text-align: left !important;
+    }
+
+    .carousel-caption .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .carousel-caption .btn {
+        padding: 8px 16px;
+        font-size: 0.84rem;
+    }
+
+    .about-experience {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 120px;
+        margin-bottom: 0;
+    }
+
+    .info-card {
+        padding: 16px 14px;
+    }
+
+    .info-card h4 {
+        font-size: 1.05rem;
+    }
+
+    .product-card {
+        border-radius: var(--radius-sm);
+    }
+
+    .product-img-wrapper {
+        height: 140px;
+    }
+
+    .product-card-body {
+        padding: 12px 8px;
+    }
+
+    .product-card-body h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .btn-product-action {
+        height: 38px;
+        font-size: 0.82rem;
+    }
+
+    .contact-form-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-sm);
+    }
+
+    .contact-item-box {
+        padding: 14px 12px;
+        border-radius: var(--radius-sm);
+    }
+
+    .banner {
+        padding: 18px 14px !important;
+        border-radius: var(--radius-sm);
+    }
+
+    .banner h3 {
+        font-size: 1.25rem;
+    }
+
+    .cow-gallery-item img {
+        height: 150px;
+    }
+}
+
 /*** Contact Cards ***/
 .contact-item-box {
     background: #FFFFFF;
