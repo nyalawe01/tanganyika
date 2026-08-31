@@ -515,99 +515,61 @@
             </div>
 
             <div class="row g-4">
-                <!-- Interactive WhatsApp Order Form -->
+                <!-- Minimalist Contact & Order Form -->
                 <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="order-calculator-box">
-                        <div class="d-flex align-items-center mb-3 pb-2 border-bottom border-white-50">
-                            <i class="fab fa-whatsapp fa-2x text-secondary me-2.5"></i>
-                            <div>
-                                <h4 class="text-white mb-0">WhatsApp Milk Order Form</h4>
-                                <small class="text-white-50">Fill details below to launch your order in WhatsApp</small>
-                            </div>
+                    <div class="contact-form-card">
+                        <div class="mb-4">
+                            <h4 class="mb-1">Send Us a Message</h4>
+                            <p class="text-muted small mb-0">Fill in the details below and we'll open WhatsApp ready to chat.</p>
                         </div>
 
                         <!-- Success Alert -->
                         <div id="orderSuccessAlert" class="alert alert-success d-none mb-3 py-2 px-3 small" role="alert">
-                            <i class="fa fa-check-circle me-1"></i> WhatsApp is opening with your order details! If it didn't open automatically, <a href="https://wa.me/255710999469" class="fw-bold text-success" target="_blank">Click here to chat directly</a>.
+                            <i class="fa fa-check-circle me-1"></i> WhatsApp is opening with your details! If it didn't open automatically, <a href="https://wa.me/255710999469" class="fw-bold text-success" target="_blank">Click here to chat directly</a>.
                         </div>
 
                         <form id="whatsappOrderForm">
-                            <div class="row g-2.5">
+                            <div class="row g-3">
                                 <!-- Customer Name -->
                                 <div class="col-md-6">
-                                    <label for="customerName" class="form-label">Your Name <span class="text-warning">*</span></label>
-                                    <input type="text" class="form-control" id="customerName" placeholder="e.g. Amina Juma" required>
+                                    <label for="customerName" class="form-label">Your Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="customerName" placeholder="Full name" required>
                                 </div>
 
                                 <!-- Customer Phone -->
                                 <div class="col-md-6">
                                     <label for="customerPhone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="customerPhone" placeholder="e.g. +255 7XX XXX XXX">
+                                    <input type="tel" class="form-control" id="customerPhone" placeholder="+255 7XX XXX XXX">
                                 </div>
 
-                                <!-- Quantity in Litres -->
-                                <div class="col-12">
-                                    <label for="orderLitres" class="form-label d-flex justify-content-between align-items-center">
-                                        <span>Select Quantity (Litres) — 2,000 TSh/L</span>
-                                        <span class="badge bg-secondary text-dark px-2 py-1" id="liveLitresSummary">5 Litres</span>
-                                    </label>
-                                    <div class="d-flex flex-wrap gap-1.5 mb-2">
-                                        <button type="button" class="btn btn-sm btn-outline-light btn-quick-litres" data-litres="1">1 Litre</button>
-                                        <button type="button" class="btn btn-sm btn-secondary btn-quick-litres" data-litres="5">5 Litres</button>
-                                        <button type="button" class="btn btn-sm btn-outline-light btn-quick-litres" data-litres="10">10 Litres</button>
-                                        <button type="button" class="btn btn-sm btn-outline-light btn-quick-litres" data-litres="20">20 Litres</button>
-                                    </div>
-                                    <input type="number" class="form-control" id="orderLitres" min="1" max="1000" value="5" placeholder="Enter custom litres">
-                                </div>
-
-                                <!-- Order Purpose / Type -->
+                                <!-- Milk Quantity -->
                                 <div class="col-md-6">
-                                    <label for="orderFor" class="form-label">Ordering For</label>
-                                    <select class="form-select" id="orderFor">
-                                        <option value="Home / Family" selected>Home / Family Consumption</option>
-                                        <option value="Restaurant / Cafe">Restaurant / Cafe</option>
-                                        <option value="Event / Function">Event / Function / Catering</option>
-                                        <option value="Wholesale / Other">Wholesale / Other Supply</option>
+                                    <label for="orderLitres" class="form-label">Milk Quantity</label>
+                                    <select class="form-select" id="orderLitres">
+                                        <option value="1">1 Litre (2,000 TSh)</option>
+                                        <option value="5" selected>5 Litres (10,000 TSh)</option>
+                                        <option value="10">10 Litres (20,000 TSh)</option>
+                                        <option value="20">20 Litres (40,000 TSh)</option>
+                                        <option value="Bulk / Custom">Bulk / Custom Quantity</option>
                                     </select>
                                 </div>
 
-                                <!-- Farm / Delivery Region -->
+                                <!-- Delivery Location -->
                                 <div class="col-md-6">
-                                    <label for="customerLocation" class="form-label">Farm / Delivery Region</label>
-                                    <select class="form-select" id="customerLocation">
-                                        <option value="Kigamboni, Dar es Salaam" selected>Kigamboni, Dar es Salaam</option>
-                                        <option value="Bagamoyo">Bagamoyo Farm Area</option>
-                                        <option value="Nzega">Nzega Farm Area</option>
-                                        <option value="Dar es Salaam (Other Districts)">Dar es Salaam (Other Areas)</option>
-                                        <option value="Other Location">Other Location in Tanzania</option>
-                                    </select>
+                                    <label for="customerLocation" class="form-label">Delivery Location</label>
+                                    <input type="text" class="form-control" id="customerLocation" placeholder="e.g. Kigamboni, Dar es Salaam">
                                 </div>
 
-                                <!-- Specific Address -->
+                                <!-- Message / Notes -->
                                 <div class="col-12">
-                                    <label for="customerAddress" class="form-label">Specific Delivery Address</label>
-                                    <input type="text" class="form-control" id="customerAddress" placeholder="e.g. Mji Mwema, Near Posta / Hotel name">
-                                </div>
-
-                                <!-- Special Notes -->
-                                <div class="col-12">
-                                    <label for="orderNotes" class="form-label">Special Notes / Requests</label>
-                                    <textarea class="form-control" id="orderNotes" rows="2" placeholder="e.g. Preferred delivery time, raw unboiled milk, etc."></textarea>
-                                </div>
-
-                                <!-- Live Price Display -->
-                                <div class="col-12 my-1">
-                                    <div class="live-price-display">
-                                        <span class="text-white-50 text-uppercase small d-block mb-0.5">Estimated Total Amount:</span>
-                                        <span class="price-amt" id="livePriceDisplay">10,000 TSh</span>
-                                        <span class="text-white-50 small d-block mt-0.5">Pay on delivery or as agreed via WhatsApp</span>
-                                    </div>
+                                    <label for="orderNotes" class="form-label">Message / Delivery Notes</label>
+                                    <textarea class="form-control" id="orderNotes" rows="3" placeholder="Tell us about your order or any questions..."></textarea>
                                 </div>
 
                                 <!-- Submit Button -->
                                 <div class="col-12 pt-1">
                                     <button class="btn btn-whatsapp w-100 rounded-pill py-2.5 fw-bold" type="submit">
-                                        <i class="fab fa-whatsapp fa-lg me-1"></i> Send Order on WhatsApp (+255 710 999 469)
+                                        <i class="fab fa-whatsapp me-2"></i> Send on WhatsApp
                                     </button>
                                 </div>
                             </div>

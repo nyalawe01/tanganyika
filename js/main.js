@@ -76,52 +76,15 @@
         });
     });
 
-    // WhatsApp Live Order Pricing & Calculation Logic
-    var PRICE_PER_LITRE = 2000;
-
-    function formatNumber(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    function calculateOrderTotal() {
-        var litres = parseInt($('#orderLitres').val(), 10);
-        if (isNaN(litres) || litres < 1) {
-            litres = 1;
-        }
-        var total = litres * PRICE_PER_LITRE;
-        $('#livePriceDisplay').text(formatNumber(total) + ' TSh');
-        $('#liveLitresSummary').text(litres + ' ' + (litres === 1 ? 'Litre' : 'Litres'));
-        return { litres: litres, total: total };
-    }
-
-    // Quick select buttons for litres
-    $(document).on('click', '.btn-quick-litres', function () {
-        var qty = $(this).data('litres');
-        $('.btn-quick-litres').removeClass('btn-secondary').addClass('btn-outline-light');
-        $(this).removeClass('btn-outline-light').addClass('btn-secondary');
-        $('#orderLitres').val(qty);
-        calculateOrderTotal();
-    });
-
-    $('#orderLitres').on('input change', function () {
-        var val = $(this).val();
-        $('.btn-quick-litres').removeClass('btn-secondary').addClass('btn-outline-light');
-        $('.btn-quick-litres[data-litres="' + val + '"]').removeClass('btn-outline-light').addClass('btn-secondary');
-        calculateOrderTotal();
-    });
-
-    // Direct WhatsApp Order submission from form
+    // Minimalist WhatsApp Form Submission
     $('#whatsappOrderForm').on('submit', function (e) {
         e.preventDefault();
 
         var name = $('#customerName').val().trim();
         var phone = $('#customerPhone').val().trim();
-        var location = $('#customerLocation').val();
-        var specificAddress = $('#customerAddress').val().trim();
-        var orderFor = $('#orderFor').val();
+        var litres = $('#orderLitres').val();
+        var location = $('#customerLocation').val().trim();
         var notes = $('#orderNotes').val().trim();
-        
-        var calc = calculateOrderTotal();
 
         if (!name) {
             alert('Please enter your name.');
@@ -129,24 +92,24 @@
             return;
         }
 
-        var message = "🐄 *NEW MILK ORDER - Tanganyika Herds & Homestead*\n";
+        var message = "🐄 *NEW INQUIRY / ORDER - Tanganyika Herds & Homestead*\n";
         message += "━━━━━━━━━━━━━━━━━━━━\n";
-        message += "👤 *Customer Name:* " + name + "\n";
+        message += "👤 *Name:* " + name + "\n";
         if (phone) {
-            message += "📞 *Contact Phone:* " + phone + "\n";
+            message += "📞 *Phone:* " + phone + "\n";
         }
-        message += "🥛 *Organic Milk Quantity:* " + calc.litres + " Litre" + (calc.litres > 1 ? "s" : "") + "\n";
-        message += "💰 *Total Estimated Price:* " + formatNumber(calc.total) + " TSh\n";
-        message += "📍 *Delivery / Farm Region:* " + location + "\n";
-        if (specificAddress) {
-            message += "🏠 *Specific Address/Area:* " + specificAddress + "\n";
+        if (litres) {
+            var qtyText = (litres === "1" || litres === "5" || litres === "10" || litres === "20") ? (litres + " Litre" + (litres === "1" ? "" : "s")) : litres;
+            message += "🥛 *Milk Quantity:* " + qtyText + "\n";
         }
-        message += "🎯 *Order Purpose:* " + orderFor + "\n";
+        if (location) {
+            message += "📍 *Location:* " + location + "\n";
+        }
         if (notes) {
-            message += "📝 *Special Notes:* " + notes + "\n";
+            message += "📝 *Message / Notes:* " + notes + "\n";
         }
         message += "━━━━━━━━━━━━━━━━━━━━\n";
-        message += "🌿 *Fresh from Kigamboni · Bagamoyo · Nzega Farms*";
+        message += "🌿 *Tanganyika Herds & Homestead (Kigamboni · Bagamoyo · Nzega)*";
 
         var encodedMsg = encodeURIComponent(message);
         var whatsappUrl = "https://wa.me/255710999469?text=" + encodedMsg;
@@ -154,19 +117,16 @@
         // Open WhatsApp in a new tab
         window.open(whatsappUrl, '_blank');
 
-        // Show feedback message in form
+        // Show feedback alert
         $('#orderSuccessAlert').removeClass('d-none').hide().fadeIn();
     });
 
-    // Preset selection when clicking quick order on product cards
+    // Preset selection when clicking package button on product cards
     $(document).on('click', '.btn-select-package', function (e) {
         e.preventDefault();
         var qty = $(this).data('litres');
         if (qty) {
             $('#orderLitres').val(qty);
-            $('.btn-quick-litres').removeClass('btn-secondary').addClass('btn-outline-light');
-            $('.btn-quick-litres[data-litres="' + qty + '"]').removeClass('btn-outline-light').addClass('btn-secondary');
-            calculateOrderTotal();
         }
         
         var target = $('#contact');
@@ -175,9 +135,6 @@
             scrollTop: target.offset().top - navHeight + 5
         }, 800);
     });
-
-    // Initial calculation on page load
-    calculateOrderTotal();
 
 })(jQuery);
 
