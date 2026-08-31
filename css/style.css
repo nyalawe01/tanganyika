@@ -135,6 +135,70 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
 }
 
+/*** Typography & Helpers ***/
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+.border-primary {
+    border-color: var(--primary) !important;
+}
+
+.border-secondary {
+    border-color: var(--secondary) !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 600 !important;
+}
+
+.fw-medium {
+    font-weight: 500 !important;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-lg-square {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*** Modern Pill Badges ***/
 .modern-badge {
     display: inline-flex;
@@ -220,6 +284,17 @@ h1, h2, h3, h4, h5, h6 {
 .btn-whatsapp:focus {
     background-color: var(--whatsapp-dark);
     border-color: var(--whatsapp-dark);
+    color: #FFFFFF !important;
+}
+
+.btn-outline-whatsapp {
+    border: 1.5px solid var(--whatsapp);
+    color: var(--whatsapp);
+    background: transparent;
+}
+
+.btn-outline-whatsapp:hover {
+    background-color: var(--whatsapp);
     color: #FFFFFF !important;
 }
 
