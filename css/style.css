@@ -518,55 +518,79 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-card-body {
-    padding: 20px;
+    padding: 22px 18px 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .product-card-body h4 {
-    font-size: 1.2rem;
-}
-
-.product-price-tag {
-    background: rgba(30, 86, 34, 0.06);
-    padding: 8px 14px;
-    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 14px;
-    display: inline-block;
+    color: var(--dark);
 }
 
-.product-price-tag .price-number {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-.product-price-tag .price-currency {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #64748B;
-}
-
-.product-features-list {
-    list-style: none;
+/* Interactive Price / Order Now Dual Button */
+.btn-product-action {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary);
+    border: 1.5px solid var(--primary);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.95rem;
     padding: 0;
-    margin: 0 0 18px 0;
-    font-size: 0.88rem;
-}
-
-.product-features-list li {
-    margin-bottom: 6px;
+    height: 44px;
     display: flex;
     align-items: center;
-    color: #475569;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
-.product-features-list li i {
-    color: var(--primary);
-    margin-right: 8px;
-    font-size: 0.85rem;
+.btn-product-action .btn-price-text,
+.btn-product-action .btn-order-text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.btn-product-action .btn-price-text {
+    opacity: 1;
+    transform: translateY(0);
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.btn-product-action .btn-order-text {
+    opacity: 0;
+    transform: translateY(8px);
+    color: #FFFFFF;
+    letter-spacing: 0.3px;
+}
+
+.btn-product-action:hover,
+.btn-product-action:focus {
+    background-color: var(--whatsapp);
+    border-color: var(--whatsapp);
+}
+
+.btn-product-action:hover .btn-price-text,
+.btn-product-action:focus .btn-price-text {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.btn-product-action:hover .btn-order-text,
+.btn-product-action:focus .btn-order-text {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /*** Interactive WhatsApp Order Box ***/
